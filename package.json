@@ -1,0 +1,109 @@
+{
+  "name": "SoFT Chat",
+  "description": "SolidJS + FeathersJS Example Chat App",
+  "version": "0.0.0",
+  "homepage": "",
+  "type": "module",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "GodBleak",
+    "email": "hello@godbleak.dev",
+    "url": "https://gitlab.godbleak.dev/godbleak"
+  },
+  "contributors": [],
+  "bugs": {},
+  "engines": {
+    "node": ">= 21.5.0"
+  },
+  "feathers": {
+    "language": "ts",
+    "packager": "npm",
+    "database": "sqlite",
+    "framework": "express",
+    "transports": [
+      "rest",
+      "websockets"
+    ],
+    "schema": "typebox"
+  },
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "files": [
+    "lib/client.js",
+    "lib/**/*.d.ts",
+    "lib/**/*.shared.js"
+  ],
+  "main": "lib/client",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon -x tsx src/index.ts",
+    "clean": "shx rm -rf lib",
+    "start": "node lib/",
+    "prettier": "npx prettier \"**/*.ts\" --write",
+    "build": "rollup -c rollup.config.js",
+    "mocha": "cross-env NODE_ENV=test mocha test/ --require ts-node/register --recursive --extension .ts --exit",
+    "test": "cross-env NODE_ENV=test npm run migrate && npm run mocha",
+    "bundle": "npm run clean && npm run build",
+    "generate:secret": "node -e \"console.log(require('crypto').randomBytes(64).toString('hex'))\"",
+    "migrate": "cross-env NODE_OPTIONS='--import tsx/esm' knex migrate:latest",
+    "migrate:make": ""
+  },
+  "dependencies": {
+    "@feathersjs/adapter-commons": "^5.0.24",
+    "@feathersjs/authentication": "^5.0.24",
+    "@feathersjs/authentication-client": "^5.0.24",
+    "@feathersjs/authentication-local": "^5.0.24",
+    "@feathersjs/authentication-oauth": "^5.0.24",
+    "@feathersjs/configuration": "^5.0.24",
+    "@feathersjs/errors": "^5.0.24",
+    "@feathersjs/express": "^5.0.24",
+    "@feathersjs/feathers": "^5.0.24",
+    "@feathersjs/knex": "^5.0.24",
+    "@feathersjs/schema": "^5.0.24",
+    "@feathersjs/socketio": "^5.0.24",
+    "@feathersjs/socketio-client": "^5.0.24",
+    "@feathersjs/transport-commons": "^5.0.24",
+    "@feathersjs/typebox": "^5.0.24",
+    "compression": "^1.7.4",
+    "daisyui": "^4.10.1",
+    "dotenv": "^16.4.5",
+    "knex": "^3.1.0",
+    "socket.io-client": "^4.7.5",
+    "solid-js": "^1.8.16",
+    "sqlite3": "^5.1.7",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "@feathersjs/cli": "^5.0.24",
+    "@feathersjs/rest-client": "^5.0.24",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.5",
+    "@types/express": "^4.17.21",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.12.5",
+    "animated-tailwindcss": "^4.0.0",
+    "autoprefixer": "^10.4.19",
+    "axios": "^1.6.8",
+    "babel-plugin-transform-commonjs": "^1.1.6",
+    "cross-env": "^7.0.3",
+    "mocha": "^10.4.0",
+    "nodemon": "^3.1.0",
+    "postcss": "^8.4.38",
+    "prettier": "^3.2.5",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "shx": "^0.3.4",
+    "tailwindcss": "^3.4.3",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.4",
+    "vite": "^5.2.8",
+    "vite-plugin-solid": "^2.10.2"
+  }
+}
